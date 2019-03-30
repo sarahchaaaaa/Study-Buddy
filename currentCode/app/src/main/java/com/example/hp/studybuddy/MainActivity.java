@@ -1,44 +1,36 @@
-package com.example.hp.studybuddy;
+package com.example.studybuddy_android;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    mTextMessage.setText("Click Create");
-                    return true;
-                case R.id.navigation_create:
-                    mTextMessage.setText("Create a Study Group");
-                    return true;
-                case R.id.navigation_profile:
-                    mTextMessage.setText("Click Create");
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Button logInButton = (Button) findViewById(R.id.logInButton);
+        /*
+        logInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.);
+            }
+        });
+        */
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        Button createProfButton = (Button) findViewById(R.id.createProfileButton);
+        createProfButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(MainActivity.this, NewProfileActivity.class);
+                startActivity(homeIntent);
+            }
+        });
     }
-
 }
