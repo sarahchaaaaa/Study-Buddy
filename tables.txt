@@ -1,0 +1,26 @@
+    private static final String CREATE_USER_TABLE =
+            " create table if not exists " + "user_table" + "(" +
+                    "NAME" + " STRING," +
+                    "NETID" + " STRING" + " PRIMARY KEY," +
+                    "MAJOR" + " STRING);";
+
+    private static final String CREATE_LOCATION_TABLE =
+            " create table if not exists " + "location_table" + "(" +
+                    "NAME" + " STRING" + " PRIMARY KEY, " +
+                    "CAPACITY" + " INTEGER, " +
+                    "XCOORDINATE" + " DOUBLE, " +
+                    "YCOORDINATE" + " DOUBLE);";
+
+    private static final String CREATE_CLASS_TABLE =
+            " create table if not exists " + "class_table" + "(" +
+                    "CRN" + " INTEGER" + " PRIMARY KEY, " +
+                    "NAME" + " STRING);";
+
+    private static final String CREATE_GROUP_TABLE =
+            " create table if not exists " + "group_table" + "(" +
+                    "GID" + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "CREATOR" + " INTEGER " + "REFERENCES " + "user_table" + "(" + "NETID" + "), " +
+                    "CRN" + " INTEGER " + "REFERENCES " + "class_table" + "(" + "CRN" + "), " +
+                    "LOCATION" + " STRING " + "REFERENCES " + "location_table" + "(" + "NAME" + "), " +
+                    "SIZE" + " INTEGER, " +
+                    "ABOUT" + " STRING);";
