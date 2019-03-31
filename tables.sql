@@ -1,11 +1,11 @@
+create table if not exists major_table(
+    MAJOR STRING PRIMARY KEY
+);
+
 create table if not exists user_table(
     NAME STRING,
     NETID STRING PRIMARY KEY,
     MAJOR STRING REFERENCES major_table(MAJOR)
-);
-
-create table if not exists major_table(
-    MAJOR STRING PRIMARY KEY,
 );
 
 create table if not exists location_table(
