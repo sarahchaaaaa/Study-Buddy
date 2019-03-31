@@ -146,7 +146,7 @@ class Database():
 			rows = cursor.fetchall()
 			connection.commit()
 		except Exception:
-                        pass
+                        raise
 
 		connection.close()
 
